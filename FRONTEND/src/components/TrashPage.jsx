@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PromptModal from "./PromptModal";
 
-const API_URL = "http://localhost:4000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
 export default function TrashPage({ active, user, showToast, onTaskRestored }) {
   const [deletedTasks, setDeletedTasks] = useState([]);
