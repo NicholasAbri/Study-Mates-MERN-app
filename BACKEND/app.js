@@ -20,7 +20,7 @@ const server = express();
 
 server.use(
   cors({
-    origin: true,
+    origin: "https://study-mates-mern-app.vercel.app",
     credentials: true,
   }),
 );
