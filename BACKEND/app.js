@@ -18,9 +18,20 @@ const server = express();
 // MIDDLEWARE
 // =========================
 
+const allowedOrigins = [
+  "https://study-mates-mern-app.vercel.app",
+  "http://localhost:5173",
+];
+
 server.use(
   cors({
-    origin: "https://study-mates-mern-app.vercel.app",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   }),
 );
